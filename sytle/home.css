@@ -81,8 +81,40 @@ section.topbar > a:after{
 
 
 
-
-
+/*playLists css  */
+section.playLists{
+    padding-top:20px;
+}
+section.playLists h2{
+    color:#333;
+    font-size: 17px;
+    border-left:2px solid #d33a31;
+    /* 通过设置行高为1，让边框高度和字体一样 */
+    line-height: 1;
+    padding-left:8px;
+    margin-bottom:14px;
+}
+section.playLists ul.songs{
+    display: flex;
+    flex-wrap:wrap;
+    justify-content: space-between;
+    font-size: 13px;
+}
+section.playLists ul.songs > li{
+    width:32.7%;
+    margin-bottom:16px;
+}
+section.playLists ul.songs > li img{
+    width:100%;
+}
+section.playLists > ul.songs > li p{
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp:2;  /*要显示的行数*/ 
+    -webkit-box-orient:vertical;
+    line-height: 16px;
+    padding:6px 2px 0 6px;;
+}
 section.playLists{}
 section.songs{}
 section.art{}

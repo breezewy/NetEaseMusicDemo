@@ -3,9 +3,12 @@
     padding:0;
     box-sizing:border-box;
 }
+body{
+    font:14px/1.5 Helvetica, sans-serif;
+}
 a{
     text-decoration: none;
-    /* color:inherit; */
+    color:inherit;
 }
 ul,ol{
     list-style:none;
