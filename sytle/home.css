@@ -6,7 +6,7 @@ section.topbar{
     justify-content:space-between;
     align-items:center;
     background:#d83938;
-    padding:17px 10px ;
+    padding:5.3225vw 3.125vw;
 }
 section.topbar .logo .topsvg{
    width:142px;
@@ -44,3 +44,20 @@ section.globalTabs{}
 section.playLists{}
 section.songs{}
 section.art{}
+
+.tabs{
+    display: flex;
+}
+.tabs > li{
+    flex:1;
+}
+.tabs > li.active{
+    background:red;
+}
+.tabContent > li{
+    display: none;
+}
+.tabContent > li.active{
+    background:red;
+    display: block;
+}
