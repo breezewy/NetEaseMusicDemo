@@ -1,6 +1,9 @@
 
 /* #d83938 */
-
+/* topbar css */
+body{
+    font-size: 15px;
+}
 section.topbar{
     display: flex;
     justify-content:space-between;
@@ -19,9 +22,6 @@ section.topbar .logo .topsvg{
 section.topbar > a{
     display: inline-block;
     color:#fff;
-    /* border:1px solid; */
-    /* border-radius:15px; */
-    font-size: 15px;
     padding:5px 10px 4px 10px ;
     line-height: 20px;
     position: relative;
@@ -40,24 +40,50 @@ section.topbar > a:after{
     transform:scale(0.5);
     transform-origin: 0 0;
 }
-section.globalTabs{}
-section.playLists{}
-section.songs{}
-section.art{}
 
+
+/* tabs css */
 .tabs{
     display: flex;
+    border-bottom:1px solid #ccc;
 }
 .tabs > li{
     flex:1;
-}
+    line-height: 20px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+} 
 .tabs > li.active{
-    background:red;
+    color:#d33a31;
+}
+.tabs > li .text{
+    padding:10px 5px;
+    position: relative;
+    top:1px;
+}
+.tabs > li.active .text:after{
+    content: "";
+    position: absolute;
+    bottom:1px;
+    left:0;
+    height:2px;
+    width:100%;
+    background:#d33a31;
 }
 .tabContent > li{
     display: none;
 }
 .tabContent > li.active{
-    background:red;
     display: block;
 }
+
+
+
+
+
+section.playLists{}
+section.songs{}
+section.art{}
+
