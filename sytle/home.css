@@ -1,15 +1,42 @@
 
-/* #d83938 */
-/* topbar css */
+
+/* common css */
 body{
     font-size: 15px;
+    color:#333;
 }
+.sectionTitle{
+    font-size: 17px;
+    border-left:2px solid #d33a31;
+    /* 通过设置行高为1，让边框高度和字体一样 */
+    line-height: 1;
+    padding-left:8px;
+    margin-bottom:14px;
+}
+small{
+    color:#888;
+}
+
+
+/* sticky  fixed */
+.sticky{
+    position: fixed;
+    left:0;
+    top:0;
+    width:100%;
+    z-index: 1;
+    background:#fff;
+}
+
+
+/* topbar css */
 section.topbar{
     display: flex;
     justify-content:space-between;
     align-items:center;
     background:#d83938;
     padding:5.3225vw 3.125vw;
+   
 }
 section.topbar .logo .topsvg{
    width:142px;
@@ -42,6 +69,8 @@ section.topbar > a:after{
 }
 
 
+
+
 /* tabs css */
 .tabs{
     display: flex;
@@ -72,6 +101,11 @@ section.topbar > a:after{
     width:100%;
     background:#d33a31;
 }
+
+
+.tabContent{
+    margin-top:104px;
+}
 .tabContent > li{
     display: none;
 }
@@ -81,18 +115,11 @@ section.topbar > a:after{
 
 
 
+
+
 /*playLists css  */
 section.playLists{
     padding-top:20px;
-}
-section.playLists h2{
-    color:#333;
-    font-size: 17px;
-    border-left:2px solid #d33a31;
-    /* 通过设置行高为1，让边框高度和字体一样 */
-    line-height: 1;
-    padding-left:8px;
-    margin-bottom:14px;
 }
 section.playLists ul.songs{
     display: flex;
@@ -115,7 +142,73 @@ section.playLists > ul.songs > li p{
     line-height: 16px;
     padding:6px 2px 0 6px;;
 }
-section.playLists{}
-section.songs{}
-section.art{}
 
+
+
+
+/* songs css */
+section.songs{}
+section.songs > .list > li > h3{
+    font-size: 17px;
+}
+section.songs > .list > li > p{
+    font-size: 12px;
+    color:#888;
+}
+section.songs > .list > li{
+    position:relative;
+    margin-left:10px;
+    padding-top:5px;
+    padding-bottom:4px;
+    border-bottom:1px solid #e2e2e2;
+}
+section.songs > .list .playButton{
+    position:absolute;
+    right:8px;
+    top:50%;
+    transform: translateY(-50%);
+}
+section.songs > .list .icon-play{
+    width:22px;
+    height:22px;
+    vertical-align: middle;
+    fill:#aaa;
+}
+section.songs > .list .icon-sq{
+    width:14px;
+    height:14px;
+    margin-right:4px;
+    fill:#fe6721;
+}
+
+
+
+/* art css */
+section.art{
+    background: url(https://neteasemusic-1258247871.cos.ap-shanghai.myqcloud.com/recommand_bg_2x.png)center center no-repeat;
+    background-size: cover;
+    padding-top:38px;
+    padding-bottom:18px;
+    text-align: center;
+}
+
+section.art  svg{
+    width:230px;
+    height:44px;
+    vertical-align: middle;
+}
+section.art .link a{
+    margin-top:15px;
+    margin-bottom:5px;
+    padding:0 17px;
+    display: inline-block;
+    line-height: 38px;
+    font-size: 16px;
+    color:#d33a31;
+    border:1px solid ;
+    border-radius:38px;
+}
+section.art .copyright{
+    font-size: 12px;
+    transform: scale(0.7);
+}
