@@ -7,6 +7,7 @@
     <title>网易云音乐</title>
     <link href="./sytle/reset.css" rel="stylesheet">
     <link href="./sytle/home.css" rel="stylesheet" >
+    <link rel="stylesheet" href="./node_modules/loaders.css/loaders.min.css">
 </head>
 <body>
     <div class="page">
@@ -120,7 +121,9 @@
                 <section class="songs">
                     <h2 class="sectionTitle">最新音乐</h2>
                     <ul class="list">
-                        <li>
+                        <div id="loading" class="square-spin"><div></div>
+                        </div>
+                        <!-- <li>
                             <h3>爱的重量<small>(电视剧 《爱情的开关》主题曲)</small></h3>
                             <p>
                                 <svg class="icon icon-sq" aria-hidden="true">
@@ -224,7 +227,7 @@
                                     <use xlink:href="#icon-play-circled"></use>
                                 </svg>
                             </a>
-                        </li>
+                        </li> -->
                     </ul>
                 </section>
                 <section class="art">
@@ -291,23 +294,113 @@
             <li class="page-3">
                 page-3
             </li>
-        </ul>
-        
+        </ul> 
     </div>
-
-
-
-
-
-
 
     <script src="//at.alicdn.com/t/font_945674_n5edgqryya9.js"></script>
     <script src="./node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="./node_modules/leancloud-storage/dist/av-min.js"></script>
     <script src="./js/home.js"></script>
     <script>
-        $('#hi').text('hello');
-    
-    
+        var APP_ID = '3r2KUtIseHz268BknDLjaINQ-gzGzoHsz';
+        var APP_KEY = '5vvYofXI1LSht793IQHP3e1E';
+
+        AV.init({
+            appId: APP_ID,
+            appKey: APP_KEY
+        });
+          
+        // var SongObject = AV.Object.extend('SongObject');  //选择表名
+        // var songObject = new SongObject();   //生成一条数据
+        // songObject.save({
+        //     name: '光年之外',    //数据里面的内容
+        //     singer:'邓紫棋',
+        //     url:'http://pj5kudrji.bkt.clouddn.com/%E5%85%89%E5%B9%B4%E4%B9%8B%E5%A4%96.mp4'
+        // }).then(function (object) {
+        //     alert('保存成功');
+        // })
+        // songObject.save({
+        //     name: '梅香如故',    //数据里面的内容
+        //     singer: '毛不易',
+        //     url: 'http://pj5kudrji.bkt.clouddn.com/%E6%A2%85%E9%A6%99%E5%A6%82%E6%95%85.mp4'
+        // }).then(function (object) {
+        //     alert('保存成功');
+        // })
+        // songObject.save({
+        //     name: '大鱼',    //数据里面的内容
+        //     singer: '周深',
+        //     url: 'http://pj5kudrji.bkt.clouddn.com/%E5%A4%A7%E9%B1%BC.mp4'
+        // }).then(function (object) {
+        //     alert('保存成功');
+        // })
+        // songObject.save({
+        //     name: '起风了',    //数据里面的内容
+        //     singer: '买辣椒也用券',
+        //     url: 'http://pj5kudrji.bkt.clouddn.com/%E8%B5%B7%E9%A3%8E%E4%BA%86.mp3'
+        // }).then(function (object) {
+        //     alert('保存成功');
+        // })
+        // songObject.save({
+        //     name: '演员',    //数据里面的内容
+        //     singer: '薛之谦',
+        //     url: 'http://pj5kudrji.bkt.clouddn.com/%E6%BC%94%E5%91%98.mp3'
+        // }).then(function (object) {
+        //     alert('保存成功');
+        // })
+        // songObject.save({
+        //     name: '认真的雪',    //数据里面的内容
+        //     singer: '薛之谦',
+        //     url: 'http://pj5kudrji.bkt.clouddn.com/%E8%AE%A4%E7%9C%9F%E7%9A%84%E9%9B%AA.mp3'
+        // }).then(function (object) {
+        //     alert('保存成功');
+        // })
+        // songObject.save({
+        //     name: '想把我唱给你听',    //数据里面的内容
+        //     singer: '老狼/王婧',
+        //     url: 'http://pj5kudrji.bkt.clouddn.com/%E6%83%B3%E6%8A%8A%E6%88%91%E5%94%B1%E7%BB%99%E4%BD%A0%E5%90%AC.mp3'
+        // }).then(function (object) {
+        //     alert('保存成功');
+        // })
+        // songObject.save({
+        //     name: '贝加尔湖畔',    //数据里面的内容
+        //     singer: '李健',
+        //     url: 'http://pj5kudrji.bkt.clouddn.com/%E8%B4%9D%E5%8A%A0%E5%B0%94%E6%B9%96%E7%95%94.mp3'
+        // }).then(function (object) {
+        //     alert('保存成功');
+        // })
+        // songObject.save({
+        //     name: '如果爱下去',    //数据里面的内容
+        //     singer: '张靓颖',
+        //     url: 'http://pj5kudrji.bkt.clouddn.com/%E5%A6%82%E6%9E%9C%E7%88%B1%E4%B8%8B%E5%8E%BB.mp3'
+        // }).then(function (object) {
+        //     alert('保存成功');
+        // })
+        // songObject.save({
+        //     name: '没你不行',    //数据里面的内容
+        //     singer: '羽泉',
+        //     url: 'http://pj5kudrji.bkt.clouddn.com/10.mp3'
+        // }).then(function (object) {
+        //     alert('保存成功');
+        // })
+        var query = new AV.Query('SongObject');
+        query.find().then(function (results) {
+        $('#loading').remove();
+        for(var i=0;i<results.length;i++){
+               let song = results[i].attributes;
+                let $li = `<li>
+                    <h3>${song.name}</h3>
+                    <p><i></i>${song.singer}</p>
+                    <a class="playButton" href="#">
+                        <svg class="icon icon-play" aria-hidden="true" >
+                            <use xlink: href="#icon-play-circled"></use>
+                        </svg>
+                    </a>
+                </li >`
+                $('.songs .list').append($li);
+           }
+        }, function (error) {
+            console.log('获取歌曲失败');
+        });
     </script>
 </body>
 </html>

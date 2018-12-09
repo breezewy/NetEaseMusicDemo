@@ -71,6 +71,8 @@ section.topbar > a:after{
 
 
 
+
+
 /* tabs css */
 .tabs{
     display: flex;
@@ -179,6 +181,12 @@ section.songs > .list .icon-sq{
     height:14px;
     margin-right:4px;
     fill:#fe6721;
+}
+
+.square-spin >  div {
+   background-color:#d83938;
+   width:50;
+   margin:0 auto;
 }
 
 
