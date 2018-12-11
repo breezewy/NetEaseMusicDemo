@@ -1,0 +1,81 @@
+
+.page{
+    position: relative;
+}
+.page::before{
+    content:"";
+    position:absolute;
+    left:0;
+    top:0;
+    height:100vh;
+    width:100%;
+    background:url('//neteasemusic-1258247871.cos.ap-shanghai.myqcloud.com/cover/dyM.jpg')center center no-repeat;
+    background-size:cover;
+    filter:blur(5px) brightness(0.5);
+    z-index: -1;
+}
+section.pointer{
+
+}
+section.disc{
+    margin-top:20px;
+}
+section.disc .circle.playing > img{
+    animation: spin 2s linear infinite;
+}
+section.disc .circle.playing::after{
+    animation: spin 2s linear infinite;
+}
+section.disc .circle.playing.pause > img,
+section.disc .circle.playing.pause::after{
+    animation-play-state: paused;
+}
+section.disc .circle{
+    position: relative;
+    width:248px;
+    height:248px;
+    border:1px solid;
+    margin:0 auto;
+}
+section.disc .circle::before{
+    content:"";
+    position: absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:url('//neteasemusic-1258247871.cos.ap-shanghai.myqcloud.com/disc-ip6.png') center center no-repeat;
+    background-size:cover;
+}
+section.disc .circle::after{
+    content:"";
+    position: absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:url('//neteasemusic-1258247871.cos.ap-shanghai.myqcloud.com/disc_light-ip6.png') center center no-repeat;
+    background-size:cover;
+}
+section.disc .circle > img{
+    position: absolute;
+    top:50%;
+    left:50%;
+    margin-left:-75px;
+    margin-top:-75px;
+    border-radius:50%;
+}
+section.lyric{
+
+}
+section.actions{
+
+}
+@keyframes spin {
+   0%{
+       transform: rotateZ(0deg);
+   }
+   100%{
+       transform: rotateZ(360deg);
+   }
+}
