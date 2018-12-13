@@ -103,6 +103,7 @@ var songObject = new SongObject();   //生成一条数据
 // })
 var query = new AV.Query('SongObject');
 query.find().then(function (results) {
+    
     $('#loading').remove();
     for (var i = 0; i < results.length; i++) {
         let song = results[i].attributes;

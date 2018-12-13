@@ -15,16 +15,23 @@
     z-index: -1;
 }
 section.pointer{
-
+    position: relative;
+}
+section.pointer > img{
+    width:96px;
+    height:137px;
+    position: absolute;
+    left:175px;
+    z-index: 1;
 }
 section.disc{
-    margin-top:20px;
+    padding-top:68px;
 }
 section.disc .circle.playing > img{
-    animation: spin 2s linear infinite;
+    animation: spin 6s linear infinite;
 }
 section.disc .circle.playing::after{
-    animation: spin 2s linear infinite;
+    animation: spin 6s linear infinite;
 }
 section.disc .circle.playing.pause > img,
 section.disc .circle.playing.pause::after{
@@ -34,7 +41,6 @@ section.disc .circle{
     position: relative;
     width:248px;
     height:248px;
-    border:1px solid;
     margin:0 auto;
 }
 section.disc .circle::before{
@@ -66,8 +72,24 @@ section.disc .circle > img{
     border-radius:50%;
 }
 section.lyric{
-
+    margin-top:25px;
 }
+section.lyric .lyricArea{
+    text-align: center;
+}
+section.lyric .lyricArea h3{
+    font-size: 18px;
+    color:#fff;
+    font-weight: 400;
+    line-height: 1.1;
+}
+section.lyric .lyricArea .text{
+    margin-top:14px;
+    font-size: 16px;
+    color:#bcb8b5;
+    line-height: 1.8;
+}
+
 section.actions{
 
 }
