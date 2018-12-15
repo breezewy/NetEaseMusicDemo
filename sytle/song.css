@@ -2,7 +2,7 @@
 .page{
     position: relative;
 }
-.page::before{
+.pageBg{
     content:"";
     position:absolute;
     left:0;
@@ -11,9 +11,10 @@
     width:100%;
     background:url('//neteasemusic-1258247871.cos.ap-shanghai.myqcloud.com/cover/dyM.jpg')center center no-repeat;
     background-size:cover;
-    filter:blur(5px) brightness(0.5);
-    z-index: -1;
+    filter:blur(4px) brightness(0.4);
+    z-index: -2;
 }
+
 section.pointer{
     position: relative;
 }
@@ -21,12 +22,47 @@ section.pointer > img{
     width:96px;
     height:137px;
     position: absolute;
-    left:175px;
+    left:45%;
     z-index: 1;
 }
 section.disc{
-    padding-top:68px;
+    padding-top:70px;
+   
 }
+section.disc .icon-wraper{
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    z-index:1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width:14.93vw;
+    height:14.93vw;
+    border:1px solid #fff;
+    border-radius:50%;
+    background:rgba(0,0,0,.5);
+}
+section.disc .icon-wraper svg{
+    width:6vw;
+    height:6vw;
+    fill:#fff;
+}
+section.disc .circle.playing .iconPause{
+    display: block;
+}
+section.disc .circle.playing .iconPlay{
+    display: none;
+}
+section.disc .circle.playing.pause .iconPause{
+    display: none;
+}
+section.disc .circle.playing.pause .iconPlay{
+    display: block;
+}
+
+
 section.disc .circle.playing > img{
     animation: spin 6s linear infinite;
 }
@@ -73,25 +109,54 @@ section.disc .circle > img{
 }
 section.lyric{
     margin-top:25px;
-}
-section.lyric .lyricArea{
     text-align: center;
+    line-height: 2;
 }
-section.lyric .lyricArea h3{
+
+section.lyric > h3{
     font-size: 18px;
     color:#fff;
     font-weight: 400;
     line-height: 1.1;
 }
-section.lyric .lyricArea .text{
+section.lyric > .text{
     margin-top:14px;
     font-size: 16px;
     color:#bcb8b5;
-    line-height: 1.8;
+    height:78px;
+    overflow: hidden;
+}
+section.lyric > .text > .lines{
+    transition:transform .3s;
+}
+section.lyric > .text > .lines{
+    line-height: 26px
+}
+section.lyric > .text > .lines >p.active{
+    color:#fff;
 }
 
 section.actions{
-
+    display: flex;
+    justify-content: space-around;
+    position: fixed;
+    bottom:10px;
+    color:#d73736;
+    display: flex;
+    width:100%;
+}
+section.actions a{
+    border:1px solid #d73736;
+    width:45.8vw;
+    height:10.6vw;
+    border-radius:10.6vw;
+    text-align: center;
+    line-height: 10.6vw;
+    font-size: 18px;
+}
+section.actions a.download{
+    background: #d73736;
+    color:#fff;
 }
 @keyframes spin {
    0%{

@@ -253,18 +253,72 @@ section.art .copyright{
 }
 
 /* searchResult */
-.searchResultBox {
-}
+
 .searchResultBox > .tips{
     color:#507daf;
     font-size: 15px;
     height:50px;
     line-height: 50px;
     margin-left:10px;
-    border-bottom:1px solid #ccc;
+    border-bottom:1px solid #f6f6f6;
 }
 .searchResultBox > .searchResult > .item{
-    border-bottom:1px solid #ccc;
+    border-bottom:1px solid #f6f6f6;
     line-height: 45px;
     margin-left:20px;
+}
+
+.page-2 > .hotSong > .hotop{
+    background:transparent url('//neteasemusic-1258247871.cos.ap-shanghai.myqcloud.com/hot_music_bg.jpg')center no-repeat;
+    width:100%;
+    height:38.9vw;
+    background-size:contain;
+    padding-left:20px;
+    padding-top:20px;
+    color:#fff;
+}
+.hotSong > .hotop > h2{
+    font-size: 35px;
+}
+.hotSong > .hotop > h3{
+    font-size: 15px;
+    font-style: italic;
+    font-weight: normal;
+}
+.hotSong > .hotop >.hotTime{
+    font-size: 12px;
+    margin-top:5px;
+}
+.hotSong > .hotList > a{
+    display: block;
+    margin-left:10px;
+    height:55px;
+    position: relative;
+    border-bottom:1px solid #f6f6f6;
+}
+.hotSong > .hotList > a > .descrip > p > svg{
+    fill:#fe6721;
+}
+.hotSong > .hotList > a .ranking{
+    position: absolute;
+    left:10;
+    line-height: 55px;
+    color:#999;
+}
+
+.hotSong > .hotList > a .descrip{
+    margin-left:30px;
+    margin-right:20px;
+    padding-top:5px;
+}
+.hotSong > .hotList > a .playBtn{
+    position: absolute;
+    right:10px;   
+    top:50%;
+    transform: translateY(-50%);
+}
+.hotSong .check{
+    color:#999;
+    text-align: center;
+    padding:15px;
 }

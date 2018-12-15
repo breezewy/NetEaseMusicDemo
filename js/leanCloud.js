@@ -1,14 +1,4 @@
 
-
-
-var APP_ID = '3r2KUtIseHz268BknDLjaINQ-gzGzoHsz';
-var APP_KEY = '5vvYofXI1LSht793IQHP3e1E';
-
-AV.init({
-    appId: APP_ID,
-    appKey: APP_KEY
-});
-
 var SongObject = AV.Object.extend('SongObject');  //选择表名
 var songObject = new SongObject();   //生成一条数据
 // songObject.save({
@@ -103,11 +93,13 @@ var songObject = new SongObject();   //生成一条数据
 // })
 var query = new AV.Query('SongObject');
 query.find().then(function (results) {
-    
-    $('#loading').remove();
-    for (var i = 0; i < results.length; i++) {
-        let song = results[i].attributes;
-        let $li = `<li>
+   setTimeout(function(){
+       $('#loading').remove();
+       for (var i = 0; i < results.length; i++) {
+           let song = results[i].attributes;
+           
+           let $li = `<li data-id = ${results[i].id}>
+                    <a href = './song.html?id=${results[i].id}'>
                     <h3>${song.name}</h3>
                     <p>
                         <svg class="icon icon-sq" aria-hidden="true">
@@ -115,14 +107,63 @@ query.find().then(function (results) {
                         </svg>
                         ${song.singer}
                     </p>
-                    <a class="playButton" href="#">
+                    </a>
+                    <a class="playButton" href='./song.html?id=${results[i].id}'>
                         <svg class="icon icon-play" aria-hidden="true" >
                             <use xlink: href="#icon-play-circled"></use>
                         </svg>
                     </a>
                 </li >`
-        $('.songs .list').append($li);
-    }
+           $('.songs .list').append($li);
+       }
+       for (var i = 0; i < results.length; i++) {
+           let song = results[i].attributes;
+           if (i < 9) {
+               let $li = `
+                    <a href = './song.html?id=${results[i].id}' data-id = ${results[i].id}>
+                    <span class="ranking">${'0' + (i + 1)}</span>
+                    <div class="descrip">
+                        <h3>${song.name}</h3>
+                    <p>
+                        <svg class="icon icon-sq" aria-hidden="true">
+                            <use xlink:href="#icon-sq"></use>
+                        </svg>
+                        ${song.singer}
+                    </p>
+                    </div>
+                        <div class="playBtn">
+                        <svg class="icon icon-play" aria-hidden="true" >
+                            <use xlink: href="#icon-play-circled"></use>
+                        </svg>
+                        </div>
+                    </a>
+                `
+               $('.hotSong > .hotList').append($li);
+           } else {
+               let $li = `
+                    <a href = './song.html?id=${results[i].id}' data-id = ${results[i].id}>
+                    <span class="ranking">${i + 1}</span>
+                    <div class="descrip">
+                        <h3>${song.name}</h3>
+                        <p>
+                            <svg class="icon icon-sq" aria-hidden="true">
+                                <use xlink:href="#icon-sq"></use>
+                            </svg>
+                            ${song.singer}
+                        </p>
+                    </div>
+                     <div class="playBtn">
+                            <svg class="icon icon-play" aria-hidden="true" >
+                                <use xlink: href="#icon-play-circled"></use>
+                            </svg>
+                    </div>
+                    </a>
+                `
+               $('.hotSong > .hotList').append($li);
+           }
+       }
+   },1000)
+   
 }, function (error) {
     console.log('获取歌曲失败');
 });

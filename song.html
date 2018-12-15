@@ -7,91 +7,55 @@
     <title>播放</title>
     <link rel="stylesheet" href="./sytle/reset.css">
     <link rel="stylesheet" href="./sytle/song.css">
+    <script src="./node_modules/jquery/dist/jquery.min.js"></script>
 </head>
 <body>
     <div class="page">
+        <div class="pageBg">
+        </div>
         <section class="pointer">
             <img src="//neteasemusic-1258247871.cos.ap-shanghai.myqcloud.com/pointer.png" alt="指针">
         </section>
         <section class="disc">
             <div class="circle playing">
-                <img src="//neteasemusic-1258247871.cos.ap-shanghai.myqcloud.com/cover/dy.jpg" width=150 height=150 alt="封面">
+                <div class="icon-wraper">
+                    <svg class="iconPlay">
+                        <use xlink:href="#icon-play"></use>
+                    </svg>
+                    <svg class="iconPause">
+                        <use xlink:href="#icon-pause"></use>
+                    </svg>
+                </div>
+                <img class="cover" src="" width=150 height=150 alt="封面">
             </div>
         </section>
         <section class="lyric">
-            <div class="lyricArea">
-                <h3>大鱼 - 周深</h3>
-                <ul class="text">
-                    <li>第1行歌词</li>
-                    <li>第2行歌词</li>
-                    <li>第3行歌词</li>
-                    <li>第4行歌词</li>
-                    <li>第5行歌词</li>
-                    <li>第6行歌词</li>
-                    <li>第7行歌词</li>
-                    <li>第8行歌词</li>
-                    <li>第9行歌词</li>
-                    <li>第10行歌词</li>
-                </ul>
+            <h3>大鱼 - 周深</h3>
+            <div class="text">
+                <div class="lines">
+                    <!-- <p>第1行歌词</p>
+                                               <p>第2行歌词</p>
+                                               <p>第3行歌词</p>
+                                               <p>第4行歌词</p>
+                                               <p>第5行歌词</p>
+                                               <p>第6行歌词</p>
+                                               <p>第7行歌词</p>
+                                               <p>第8行歌词</p>
+                                               <p>第9行歌词</p>
+                                               <p>第10行歌词</p> -->
+                </div>
             </div>
         </section>
         <section class="actions">
-            <a href="#" class="open">打开</a>
-            <a href="#" class="download">下载</a>
+            <a href="#" class="open">打 开</a>
+            <a href="#" class="download">下 载</a>
         </section>
     </div>
 
-
+    <script src="//at.alicdn.com/t/font_945674_9x9pnik6i1.js"></script>
     <script src="./node_modules/leancloud-storage/dist/av-min.js"></script>
     <script src="./js/av.js"></script>
-    <script>
-        // 获取url参数
-        function getQueryString(name) {
-            var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i');
-            var r = window.location.search.substr(1).match(reg);
-            if (r != null) {
-                return unescape(r[2]);
-            }
-            return null;
-        }
-        let id= getQueryString('id');
-        let query = new AV.Query('SongObject');
-        
-        
-        // 根据id获得存储的歌曲数据
-        query.get(id).then(function(response){
-            let {name,url,lyric} = response.attributes;
-            let audio = new Audio();
-            audio.src = url;
-            audio.play();
-            
-            let lyricArr = lyric.split('\n');
-            let lyricObj = {};
-            // 遍历每一行
-            lyricArr.forEach(function(string,index){
-                let reg = /\[\d*:\d*((\.|\:)\d*)*\]/g;
-                let timeArr = string.match(reg);
-                let lyricStr = string.replace(reg, '');
-                // console.log(string);
-                
-                // 遍历每一行匹配的时间 ，同一句歌词有可能有不同的时间
-                timeArr.forEach(function(time,index){
-                    // console.log(time);
-                    let t = time;
-                    let min = Number(String(t.match(/\[\d*/i)).slice(1));
-                    let sec = Number(String(t.match(/\:\d*/i)).slice(1));
-                    let times = min*60+sec;
-                    lyricObj[times] = lyricStr;
-                })
-
-                console.log(lyricObj); //可以打印lyricObj
-                
-            })
-            console.log(lyricObj);  //无法打印
-                   
-        })
-        
-    </script>
+    <script src="./js/song.js"></script>
    
 </body>
 </html>
